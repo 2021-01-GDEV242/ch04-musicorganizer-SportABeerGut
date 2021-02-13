@@ -15,6 +15,10 @@ public class MusicOrganizer
     private MusicPlayer player;
     // A reader that can read music files and load them as tracks.
     private TrackReader reader;
+    //An ArrayList for storing books in a library
+    private ArrayList<book> library;
+    //A track to store the music tracks
+    private tracks MusicTrack;
 
     /**
      * Create a MusicOrganizer
@@ -24,9 +28,26 @@ public class MusicOrganizer
         tracks = new ArrayList<>();
         player = new MusicPlayer();
         reader = new TrackReader();
+        library = new ArrayList<book>();
+        MusicTrack = new tracks();
         readLibrary("../audio");
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
+    }
+    
+    /**
+     * Add a track file to the collection.
+     * @param filename The file name of the track to be added.
+     */
+    public void cs101()
+    {
+        ArrayList<Student> cs101;
+        
+        cs101 = new ArrayList<Student>();
+        cs101 = new ArrayList<>();
+        MusicTrack = new tracks();
+        library = new ArrayList<book>();
+        library = new ArrayList<>();
     }
     
     /**
