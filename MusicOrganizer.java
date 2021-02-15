@@ -18,9 +18,9 @@ public class MusicOrganizer
     //An ArrayList for storing books in a library
     private ArrayList<book> library;
     //A track to store the music tracks
-    private tracks MusicTrack;
-
-    /**
+    private MusicTracks track;
+    
+        /**
      * Create a MusicOrganizer
      */
     public MusicOrganizer()
@@ -29,8 +29,8 @@ public class MusicOrganizer
         player = new MusicPlayer();
         reader = new TrackReader();
         library = new ArrayList<book>();
-        MusicTrack = new tracks();
-        readLibrary("../audio");
+        track = new MusicTracks();
+       // readLibrary("../audio");
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
     }
@@ -45,7 +45,7 @@ public class MusicOrganizer
         
         cs101 = new ArrayList<Student>();
         cs101 = new ArrayList<>();
-        MusicTrack = new tracks();
+        track = new MusicTracks();
         library = new ArrayList<book>();
         library = new ArrayList<>();
     }
@@ -89,16 +89,18 @@ public class MusicOrganizer
     {
         return tracks.size();
     }
-    
+          
     /**
      * List a track from the collection.
      * @param index The index of the track to be listed.
      */
-    public void listTrack(int index)
+    public void listTracks(int index)
     {
+        if(validIndex(index)) {
         System.out.print("Track " + index + ": ");
         Track track = tracks.get(index);
         System.out.println(track.getDetails());
+    }
     }
     
     /**
@@ -133,7 +135,7 @@ public class MusicOrganizer
      */
     public void removeTrack(int index)
     {
-        if(indexValid(index)) {
+        if(validIndex(index)) {
             tracks.remove(index);
         }
     }
@@ -180,6 +182,54 @@ public class MusicOrganizer
             valid = true;
         }
         return valid;
+    }
+    
+    /**
+     * Determine whether the given index is valid for the collection.
+     * Print an error message if it is not.
+     * @param index The index to be checked.
+     * @return true if the index is valid, false otherwise.
+     */
+    private boolean validIndex(int index)
+    {
+        // The return value.
+        // Set according to whether the index is valid or not.
+        boolean valid = true;
+        
+        if(index < 0) {
+            valid = false;
+        }
+        else if(index >= tracks.size()) {
+            valid = false;
+        }
+        
+        return valid;
+    }
+    
+     /**
+     * Determine whether the given index is valid for the collection.
+     * Print an error message if it is not.
+     * @param index The index to be checked.
+     * @return true if the index is valid, false otherwise.
+     */
+    public void checkIndexValid(int index)
+    {
+        // The return value.
+        // Set according to whether the index is valid or not.
+        boolean valid;
+        
+        if(index < 0) {
+            System.out.println("Valid range is between 0 " + (tracks.size() - 1));
+            valid = false;
+        }
+        else if(index >= tracks.size()) {
+            System.out.println("Index must be between 0" + (tracks.size() - 1));
+            valid = false;
+        }
+        else {
+            valid = true;
+        }
+        
     }
     
     private void readLibrary(String folderName)
