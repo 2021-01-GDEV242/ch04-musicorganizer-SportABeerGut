@@ -145,6 +145,22 @@ public class MusicOrganizer
         }
     }
 
+     /**
+     * Prints the sum of all the numbers between the parameters a and b.
+     */
+    public void sum(int a, int b)
+    {
+        int number = a;
+        int sum = 0;
+        while(number <= b){
+            sum = sum + number;
+            number++;
+            System.out.println(number);
+        
+        }
+        System.out.println(sum);
+    }
+    
     /**
      * Prints out all multiples of 5 between 10 and 95.
      */
@@ -154,7 +170,7 @@ public class MusicOrganizer
         int sum = 0;
         while(number <= 10){
             sum = sum + number;
-            number = number++;
+            number++;
             System.out.println(number);
         
         }
