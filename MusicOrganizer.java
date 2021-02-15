@@ -132,6 +132,21 @@ public class MusicOrganizer
     }
     
     /**
+     * Prints out all multiples of 5 between 10 and 95.
+     */
+    public void multiplesOfFive()
+    {
+        int number = 10;
+        
+        while(number <= 95){
+            number = number + 5;
+            System.out.println(number);
+        
+        }
+    }
+
+    
+    /**
      * List all tracks by the given artist.
      * @param artist The artist's name.
      */
@@ -146,9 +161,9 @@ public class MusicOrganizer
         }
         if(!matched){
             System.out.println("There are no sample tracks for that artist. ");
+        }
     }
-}
-    
+   
     /**
      * List all tracks with the given title
      * @param title The title of the track.
