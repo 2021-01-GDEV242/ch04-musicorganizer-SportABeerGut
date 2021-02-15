@@ -177,6 +177,28 @@ public class MusicOrganizer
         System.out.println(sum);
     }
     
+      /**
+     * Check if a number is a prime number.
+     * @param n The number
+     * @return boolean true if the number is a prime number, false if it is not.
+     */
+    public boolean isPrime(int n)
+    {
+        int number = 2;
+        boolean prime = true;
+       
+        while (number < n) {
+            if ((n % number) == 0){
+                prime = false;
+            }
+            number++;
+        }
+       
+        return(prime);
+
+    }
+
+    
     /**
      * List all tracks by the given artist.
      * @param artist The artist's name.
