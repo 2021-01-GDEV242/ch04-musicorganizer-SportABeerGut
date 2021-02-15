@@ -4,8 +4,8 @@ import java.util.ArrayList;
  * A class to hold details of audio tracks.
  * Individual tracks may be played.
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29
+ * @author Colin Jones
+ * @version 2021/02/14
  */
 public class MusicOrganizer
 {
@@ -15,12 +15,13 @@ public class MusicOrganizer
     private MusicPlayer player;
     // A reader that can read music files and load them as tracks.
     private TrackReader reader;
-    //An ArrayList for storing books in a library
+    // An ArrayList for storing books in a library.
     private ArrayList<book> library;
     //A track to store the music tracks
     private MusicTracks track;
-    
-        /**
+     
+
+    /**
      * Create a MusicOrganizer
      */
     public MusicOrganizer()
@@ -30,7 +31,7 @@ public class MusicOrganizer
         reader = new TrackReader();
         library = new ArrayList<book>();
         track = new MusicTracks();
-       // readLibrary("../audio");
+        readLibrary("../audio");
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
     }
@@ -45,7 +46,6 @@ public class MusicOrganizer
         
         cs101 = new ArrayList<Student>();
         cs101 = new ArrayList<>();
-        track = new MusicTracks();
         library = new ArrayList<book>();
         library = new ArrayList<>();
     }
@@ -74,7 +74,7 @@ public class MusicOrganizer
      */
     public void playTrack(int index)
     {
-        if(indexValid(index)) {
+        if(validIndex(index)) {
             Track track = tracks.get(index);
             player.playSample(track.getFilename());
             System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
@@ -89,18 +89,18 @@ public class MusicOrganizer
     {
         return tracks.size();
     }
-          
-    /**
+    
+        /**
      * List a track from the collection.
      * @param index The index of the track to be listed.
      */
-    public void listTracks(int index)
+    public void listTrack(int index)
     {
-        if(validIndex(index)) {
-        System.out.print("Track " + index + ": ");
-        Track track = tracks.get(index);
-        System.out.println(track.getDetails());
-    }
+        if (validIndex(index)){
+            System.out.print("Track " + index + ": ");
+            Track track = tracks.get(index);
+            System.out.println(track.getDetails());
+        }
     }
     
     /**
@@ -108,10 +108,12 @@ public class MusicOrganizer
      */
     public void listAllTracks()
     {
+        int position = 0;
         System.out.println("Track listing: ");
 
         for(Track track : tracks) {
-            System.out.println(track.getDetails());
+            System.out.println(position + ": " + track.getDetails());
+            position++;
         }
         System.out.println();
     }
@@ -130,12 +132,25 @@ public class MusicOrganizer
     }
     
     /**
+     * List all tracks with the given title
+     * @param title The title of the track.
+     */
+    public void listMatching(String title)
+    {
+        for(Track track : tracks) {
+            if(track.getTitle().contains(title)) {
+                System.out.println(track.getDetails());
+            }
+        }
+    }
+    
+        /**
      * Remove a track from the collection.
      * @param index The index of the track to be removed.
      */
     public void removeTrack(int index)
     {
-        if(validIndex(index)) {
+        if(indexValid(index)) {
             tracks.remove(index);
         }
     }
@@ -231,7 +246,6 @@ public class MusicOrganizer
         }
         
     }
-    
     private void readLibrary(String folderName)
     {
         ArrayList<Track> tempTracks = reader.readTracks(folderName, ".mp3");
