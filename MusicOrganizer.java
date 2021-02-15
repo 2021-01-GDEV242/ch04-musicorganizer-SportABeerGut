@@ -145,6 +145,21 @@ public class MusicOrganizer
         }
     }
 
+    /**
+     * Prints out all multiples of 5 between 10 and 95.
+     */
+    public void addValuesFromOneToTen()
+    {
+        int number = 1;
+        int sum = 0;
+        while(number <= 10){
+            sum = sum + number;
+            number = number++;
+            System.out.println(number);
+        
+        }
+        System.out.println(sum);
+    }
     
     /**
      * List all tracks by the given artist.
