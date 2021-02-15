@@ -137,10 +137,15 @@ public class MusicOrganizer
      */
     public void listMatching(String title)
     {
+        boolean matched = false;
         for(Track track : tracks) {
             if(track.getTitle().contains(title)) {
+                matched = true;
                 System.out.println(track.getDetails());
             }
+        }
+        if(!matched){
+            System.out.println("There are no tracks that match your description. ");
         }
     }
     
