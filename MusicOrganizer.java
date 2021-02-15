@@ -132,6 +132,24 @@ public class MusicOrganizer
     }
     
     /**
+     * List all tracks by the given artist.
+     * @param artist The artist's name.
+     */
+    public void playSampleByArtist(String artist)
+    {
+        boolean matched = false;
+        for(Track track : tracks) {
+            if(track.getArtist().contains(artist)) {
+                matched = true;
+                player.playSample(track.getFilename());
+             }
+        }
+        if(!matched){
+            System.out.println("There are no sample tracks for that artist. ");
+    }
+}
+    
+    /**
      * List all tracks with the given title
      * @param title The title of the track.
      */
